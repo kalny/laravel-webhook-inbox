@@ -25,6 +25,11 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        $app['config']->set(
+            'webhook-inbox.providers.paddle.webhook_secret',
+            'paddle-test-secret'
+        );
     }
 
     protected function defineDatabaseMigrations(): void
