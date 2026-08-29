@@ -26,13 +26,12 @@
         "phpstan/phpstan": "^2.2",
         "shipmonk/dead-code-detector": "^1.4",
         "larastan/larastan": "^3.10",
-        "laravel/pint": "^1.30",
-        "illuminate/database": "*",
-        "illuminate/support": "*"
+        "laravel/pint": "^1.30"
     },
     "config": {
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
@@ -41,5 +40,13 @@
                 "Kalny\\LaravelWebhookInbox\\Providers\\LaravelWebhookInboxServiceProvider"
             ]
         }
+    },
+    "require": {
+        "illuminate/database": "*",
+        "illuminate/support": "*",
+        "symfony/psr-http-message-bridge": "8.2.x-dev",
+        "nyholm/psr7": "^1.8@dev",
+        "paddlehq/paddle-php-sdk": "dev-main",
+        "symfony/http-client": "8.2.x-dev"
     }
 }
