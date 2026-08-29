@@ -1,0 +1,36 @@
+{
+    "name": "kalny/laravel-webhook-inbox",
+    "description": "Webhook processing in a Laravel app",
+    "type": "library",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Kalny\\LaravelWebhookInbox\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kalny\\LaravelWebhookInbox\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anton Kalny",
+            "email": "kalnyanton@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "pestphp/pest": "^5.1",
+        "orchestra/testbench": "^11.2",
+        "phpstan/phpstan": "^2.2",
+        "shipmonk/dead-code-detector": "^1.4",
+        "larastan/larastan": "^3.10",
+        "laravel/pint": "^1.30"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

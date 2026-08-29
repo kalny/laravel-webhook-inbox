@@ -1,0 +1,30 @@
+# Composer
+/vendor/
+composer.lock
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# PHPUnit / Pest
+.phpunit.result.cache
+.phpunit.cache/
+
+# PHPStan
+.phpstan.cache
+.phpstan.neon.local
+
+# PHP CS Fixer
+.php-cs-fixer.cache
+
+# Docker
+docker-compose.override.yml
