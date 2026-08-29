@@ -26,11 +26,20 @@
         "phpstan/phpstan": "^2.2",
         "shipmonk/dead-code-detector": "^1.4",
         "larastan/larastan": "^3.10",
-        "laravel/pint": "^1.30"
+        "laravel/pint": "^1.30",
+        "illuminate/database": "*",
+        "illuminate/support": "*"
     },
     "config": {
         "allow-plugins": {
             "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kalny\\LaravelWebhookInbox\\Providers\\LaravelWebhookInboxServiceProvider"
+            ]
         }
     }
 }
