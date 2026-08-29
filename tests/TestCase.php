@@ -31,11 +31,4 @@ class TestCase extends Orchestra
             'paddle-test-secret'
         );
     }
-
-    protected function defineDatabaseMigrations(): void
-    {
-        $this->loadMigrationsFrom(
-            __DIR__.'/../database/migrations'
-        );
-    }
 }
