@@ -38,7 +38,6 @@ return [
 Add environment variables to the `.env` file
 
 ```bash
-WEBHOOK_PREFIX=webhooks
 PADDLE_WEBHOOK_SECRET=
 ```
 
