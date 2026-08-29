@@ -20,17 +20,23 @@ class LaravelWebhookInboxServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->publishes([
+            __DIR__.'/../../config/webhook-inbox.php' => config_path('webhook-inbox.php'),
+        ], 'webhook-inbox-config');
+
         $this->loadMigrationsFrom(
             __DIR__.'/../../database/migrations'
         );
 
-        Route::prefix(config('webhook-inbox.route.prefix'))
-            ->middleware(config('webhook-inbox.route.middleware'))
-            ->group(function () {
-                Route::post(
-                    '/{provider}',
-                    WebhookController::class
-                );
-            });
+        if (config('webhook-inbox.route.enabled')) {
+            Route::prefix(config('webhook-inbox.route.prefix'))
+                ->middleware(config('webhook-inbox.route.middleware'))
+                ->group(function () {
+                    Route::post(
+                        '/{provider}',
+                        WebhookController::class
+                    );
+                });
+        }
     }
 }

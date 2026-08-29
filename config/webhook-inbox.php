@@ -2,7 +2,8 @@
 
 return [
     'route' => [
-        'prefix' => env('WEBHOOK_PREFIX', 'webhooks'),
+        'enabled' => true,
+        'prefix' => 'webhooks',
         'middleware' => [],
     ],
     'providers' => [
