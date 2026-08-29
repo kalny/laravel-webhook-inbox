@@ -6,6 +6,7 @@ namespace Kalny\LaravelWebhookInbox\Services;
 
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
+use Kalny\LaravelWebhookInbox\Events\WebhookReceived;
 use Kalny\LaravelWebhookInbox\Models\WebhookEvent;
 use Kalny\LaravelWebhookInbox\Services\Factories\WebhookAdapterFactory;
 
@@ -21,7 +22,7 @@ class WebhookReceiver
 
         $webhook = $webhookAdapter->getWebhook($payload);
 
-        WebhookEvent::firstOrCreate(
+        $event = WebhookEvent::firstOrCreate(
             [
                 'provider' => $webhook->provider,
                 'event_id' => $webhook->eventId,
@@ -33,5 +34,9 @@ class WebhookReceiver
                 'status' => WebhookEventStatus::Pending,
             ],
         );
+
+        if ($event->wasRecentlyCreated) {
+            event(new WebhookReceived($event->id));
+        }
     }
 }
