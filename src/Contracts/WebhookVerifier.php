@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kalny\LaravelWebhookInbox\Services;
+namespace Kalny\LaravelWebhookInbox\Contracts;
 
 use Illuminate\Http\Request;
 

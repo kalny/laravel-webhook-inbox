@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Kalny\LaravelWebhookInbox\Services\Paddle;
 
 use Illuminate\Http\Request;
+use Kalny\LaravelWebhookInbox\Contracts\WebhookVerifier;
 use Kalny\LaravelWebhookInbox\Services\RequestAdapter;
-use Kalny\LaravelWebhookInbox\Services\WebhookVerifier;
 use Paddle\SDK\Notifications\Secret;
 use Paddle\SDK\Notifications\Verifier;
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Kalny\LaravelWebhookInbox\Services\Factories;
 
+use Kalny\LaravelWebhookInbox\Contracts\WebhookAdapter;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidPaymentProviderException;
 use Kalny\LaravelWebhookInbox\Services\Paddle\PaddleWebhookAdapter;
-use Kalny\LaravelWebhookInbox\Services\WebhookAdapter;
 
 class WebhookAdapterFactory
 {

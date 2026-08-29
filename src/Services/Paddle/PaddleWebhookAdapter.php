@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Kalny\LaravelWebhookInbox\Services\Paddle;
 
 use Carbon\CarbonImmutable;
+use Kalny\LaravelWebhookInbox\Contracts\WebhookAdapter;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Services\DTO\WebhookDTO;
-use Kalny\LaravelWebhookInbox\Services\WebhookAdapter;
 
 class PaddleWebhookAdapter implements WebhookAdapter
 {
