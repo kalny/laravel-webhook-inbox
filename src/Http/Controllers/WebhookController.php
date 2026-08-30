@@ -7,7 +7,7 @@ namespace Kalny\LaravelWebhookInbox\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Services\Factories\WebhookVerifierFactory;
+use Kalny\LaravelWebhookInbox\Services\Factories\WebhookHandlerFactory;
 use Kalny\LaravelWebhookInbox\Services\WebhookReceiver;
 
 class WebhookController
@@ -15,14 +15,14 @@ class WebhookController
     public function __invoke(
         string $provider,
         Request $request,
-        WebhookVerifierFactory $verifierFactory,
+        WebhookHandlerFactory $handlerFactory,
         WebhookReceiver $webhookReceiver
     ): JsonResponse {
         $paymentProvider = PaymentProvider::tryFrom($provider);
 
-        $verifier = $verifierFactory->getVerifier($paymentProvider);
+        $handler = $handlerFactory->getHandler($paymentProvider);
 
-        if (! $verifier->verify($request)) {
+        if (! $handler->verify($request)) {
             abort(400, 'Invalid signature');
         }
 
