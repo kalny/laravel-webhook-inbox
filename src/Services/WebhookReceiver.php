@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kalny\LaravelWebhookInbox\Services;
 
+use Illuminate\Http\Request;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 use Kalny\LaravelWebhookInbox\Events\WebhookReceived;
@@ -16,11 +17,11 @@ class WebhookReceiver
         private WebhookHandlerFactory $webhookHandlerFactory
     ) {}
 
-    public function receive(PaymentProvider $provider, array $payload): void
+    public function receive(PaymentProvider $provider, Request $payload): void
     {
         $webhookHandler = $this->webhookHandlerFactory->getHandler($provider);
 
-        $webhook = $webhookHandler->getWebhook($payload);
+        $webhook = $webhookHandler->handle($payload);
 
         $event = WebhookEvent::firstOrCreate(
             [
