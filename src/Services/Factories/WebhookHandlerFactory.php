@@ -6,16 +6,30 @@ namespace Kalny\LaravelWebhookInbox\Services\Factories;
 
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Services\AbstractWebhookHandler;
-use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidPaymentProviderException;
-use Kalny\LaravelWebhookInbox\Services\Paddle\PaddleWebhookHandler;
+use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidHandlerException;
 
 class WebhookHandlerFactory
 {
-    public function getHandler(?PaymentProvider $paymentProvider): AbstractWebhookHandler
+    public function getHandler(PaymentProvider $paymentProvider): AbstractWebhookHandler
     {
-        return match ($paymentProvider) {
-            PaymentProvider::Paddle => app(PaddleWebhookHandler::class),
-            default => throw new InvalidPaymentProviderException
-        };
+        $paymentProviderName = $paymentProvider->value;
+
+        $handlerClassName = config(
+            "webhook-inbox.providers.$paymentProviderName.handler",
+            null
+        );
+
+        if (! $handlerClassName || ! class_exists($handlerClassName)) {
+            throw new InvalidHandlerException;
+        }
+
+        if (
+            ! class_exists($handlerClassName)
+            || ! is_subclass_of($handlerClassName, AbstractWebhookHandler::class)
+        ) {
+            throw new InvalidHandlerException;
+        }
+
+        return app($handlerClassName);
     }
 }
