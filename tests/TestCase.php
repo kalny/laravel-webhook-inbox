@@ -30,5 +30,10 @@ class TestCase extends Orchestra
             'webhook-inbox.providers.paddle.webhook_secret',
             'paddle-test-secret'
         );
+
+        $app['config']->set(
+            'webhook-inbox.providers.paddle.handler',
+            'Kalny\\LaravelWebhookInbox\\Services\\Paddle\\PaddleWebhookHandler'
+        );
     }
 }
