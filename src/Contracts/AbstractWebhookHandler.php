@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Kalny\LaravelWebhookInbox\Services;
+namespace Kalny\LaravelWebhookInbox\Contracts;
 
 use Illuminate\Http\Request;
-use Kalny\LaravelWebhookInbox\Contracts\WebhookHandler;
 use Kalny\LaravelWebhookInbox\Services\DTO\WebhookDTO;
 
-abstract class AbstractWebhookHandler implements WebhookHandler
+abstract class AbstractWebhookHandler
 {
     public function handle(Request $request): WebhookDTO
     {

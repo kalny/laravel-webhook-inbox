@@ -6,8 +6,8 @@ namespace Kalny\LaravelWebhookInbox\Services\Paddle;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
+use Kalny\LaravelWebhookInbox\Contracts\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Services\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Services\DTO\WebhookDTO;
 use Kalny\LaravelWebhookInbox\Services\RequestAdapter;
 use Paddle\SDK\Notifications\Secret;

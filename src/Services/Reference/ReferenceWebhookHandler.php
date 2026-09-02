@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Kalny\LaravelWebhookInbox\Services\Reference;
 
 use Carbon\CarbonImmutable;
+use Kalny\LaravelWebhookInbox\Contracts\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Services\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Services\DTO\WebhookDTO;
 
 class ReferenceWebhookHandler extends AbstractWebhookHandler

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Kalny\LaravelWebhookInbox\Services\Factories;
 
+use Kalny\LaravelWebhookInbox\Contracts\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Services\AbstractWebhookHandler;
 use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidHandlerException;
 
 class WebhookHandlerFactory
