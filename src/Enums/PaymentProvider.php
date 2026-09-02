@@ -7,4 +7,5 @@ namespace Kalny\LaravelWebhookInbox\Enums;
 enum PaymentProvider: string
 {
     case Paddle = 'paddle';
+    case Reference = 'reference';
 }
