@@ -2,7 +2,6 @@
     "name": "kalny/laravel-webhook-inbox",
     "description": "Webhook processing in a Laravel app",
     "type": "library",
-    "minimum-stability": "dev",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -42,11 +41,11 @@
         }
     },
     "require": {
-        "illuminate/database": "*",
-        "illuminate/support": "*",
-        "symfony/psr-http-message-bridge": "8.2.x-dev",
-        "nyholm/psr7": "^1.8@dev",
-        "paddlehq/paddle-php-sdk": "dev-main",
-        "symfony/http-client": "8.2.x-dev"
+        "illuminate/database": "^13.0",
+        "illuminate/support": "^13.0",
+        "symfony/psr-http-message-bridge": "^8.1",
+        "nyholm/psr7": "^1.8",
+        "paddlehq/paddle-php-sdk": "^1.17",
+        "symfony/http-client": "^8.1"
     }
 }
