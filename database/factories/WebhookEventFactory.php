@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 use Kalny\LaravelWebhookInbox\Models\WebhookEvent;
-use Kalny\LaravelWebhookInbox\Tests\Fixtures\PaddleTransactionCompletedWebhookBuilder;
 
 /**
  * @extends Factory<WebhookEvent>
@@ -26,7 +25,7 @@ class WebhookEventFactory extends Factory
             'event_id' => 'evt_123',
             'event_type' => 'payment.succeeded',
             'occurred_at' => CarbonImmutable::now(),
-            'payload' => (new PaddleTransactionCompletedWebhookBuilder())->build(),
+            'payload' => [],
             'status' => WebhookEventStatus::Pending,
         ];
     }

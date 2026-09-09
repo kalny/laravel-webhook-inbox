@@ -2,9 +2,12 @@
 
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Models\WebhookEvent;
+use Kalny\LaravelWebhookInbox\Tests\Fixtures\PaddleTransactionCompletedWebhookBuilder;
 
 it('can create a webhook event', function () {
-    $event = WebhookEvent::factory()->create();
+    $event = WebhookEvent::factory()->create([
+        'payload' => (new PaddleTransactionCompletedWebhookBuilder())->build()
+    ]);
 
     expect($event)
         ->toBeInstanceOf(WebhookEvent::class)
