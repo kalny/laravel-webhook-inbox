@@ -4,7 +4,6 @@ namespace Kalny\LaravelWebhookInbox\Database\Factories;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 use Kalny\LaravelWebhookInbox\Models\WebhookEvent;
 
@@ -21,7 +20,7 @@ class WebhookEventFactory extends Factory
     public function definition(): array
     {
         return [
-            'provider' => PaymentProvider::Paddle,
+            'provider' => 'paddle',
             'event_id' => 'evt_123',
             'event_type' => 'transaction.completed',
             'occurred_at' => CarbonImmutable::now(),

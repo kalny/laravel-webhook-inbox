@@ -7,7 +7,6 @@ namespace Kalny\LaravelWebhookInbox\Services\Paddle;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 use Kalny\LaravelWebhookInbox\Contracts\AbstractWebhookHandler;
-use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Services\DTO\WebhookDTO;
 use Kalny\LaravelWebhookInbox\Services\RequestAdapter;
 use Paddle\SDK\Notifications\Secret;
@@ -34,7 +33,7 @@ class PaddleWebhookHandler extends AbstractWebhookHandler
     public function getWebhook(array $payload): WebhookDTO
     {
         return new WebhookDTO(
-            provider: PaymentProvider::Paddle,
+            provider: 'paddle',
             eventId: $payload['event_id'],
             eventType: $payload['event_type'],
             occuredAt: CarbonImmutable::parse($payload['occurred_at']),

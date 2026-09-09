@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace Kalny\LaravelWebhookInbox\Services\Factories;
 
 use Kalny\LaravelWebhookInbox\Contracts\AbstractWebhookHandler;
-use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidHandlerException;
 
 class WebhookHandlerFactory
 {
-    public function getHandler(PaymentProvider $paymentProvider): AbstractWebhookHandler
+    public function getHandler(string $provider): AbstractWebhookHandler
     {
-        $paymentProviderName = $paymentProvider->value;
-
         $handlerClassName = config(
-            "webhook-inbox.providers.$paymentProviderName.handler",
+            "webhook-inbox.providers.$provider.handler",
             null
         );
 

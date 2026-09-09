@@ -10,12 +10,11 @@ use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Kalny\LaravelWebhookInbox\Database\Factories\WebhookEventFactory;
-use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 
 /**
  * @property int $id
- * @property PaymentProvider $provider
+ * @property string $provider
  * @property string $event_id
  * @property string $event_type
  * @property CarbonImmutable $occurred_at
@@ -51,7 +50,6 @@ class WebhookEvent extends Model
     protected function casts(): array
     {
         return [
-            'provider' => PaymentProvider::class,
             'payload' => 'array',
             'occurred_at' => 'datetime',
             'processing_started_at' => 'datetime',

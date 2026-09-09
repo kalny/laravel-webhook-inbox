@@ -6,8 +6,6 @@ namespace Kalny\LaravelWebhookInbox\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Services\Exceptions\InvalidPaymentProviderException;
 use Kalny\LaravelWebhookInbox\Services\WebhookReceiver;
 
 class WebhookController
@@ -17,13 +15,7 @@ class WebhookController
         Request $request,
         WebhookReceiver $webhookReceiver
     ): JsonResponse {
-        $paymentProvider = PaymentProvider::tryFrom($provider);
-
-        if (! $paymentProvider) {
-            throw new InvalidPaymentProviderException;
-        }
-
-        $webhookReceiver->receive($paymentProvider, $request);
+        $webhookReceiver->receive($provider, $request);
 
         return response()->json(['ok']);
     }
