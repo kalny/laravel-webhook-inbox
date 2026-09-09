@@ -23,7 +23,7 @@ class WebhookEventFactory extends Factory
         return [
             'provider' => PaymentProvider::Paddle,
             'event_id' => 'evt_123',
-            'event_type' => 'payment.succeeded',
+            'event_type' => 'transaction.completed',
             'occurred_at' => CarbonImmutable::now(),
             'payload' => [],
             'status' => WebhookEventStatus::Pending,
