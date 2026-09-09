@@ -10,7 +10,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Kalny\\LaravelWebhookInbox\\Tests\\": "tests/"
+            "Kalny\\LaravelWebhookInbox\\Tests\\": "tests/",
+            "Kalny\\LaravelWebhookInbox\\Database\\Factories\\": "database/factories/"
         }
     },
     "authors": [

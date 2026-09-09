@@ -1,21 +1,10 @@
 <?php
 
-use Carbon\CarbonImmutable;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
-use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 use Kalny\LaravelWebhookInbox\Models\WebhookEvent;
 
 it('can create a webhook event', function () {
-    $event = WebhookEvent::create([
-        'provider' => PaymentProvider::Paddle,
-        'event_id' => 'evt_123',
-        'event_type' => 'payment.succeeded',
-        'occurred_at' => CarbonImmutable::now(),
-        'payload' => [
-            'amount' => 1000,
-        ],
-        'status' => WebhookEventStatus::Pending,
-    ]);
+    $event = WebhookEvent::factory()->create();
 
     expect($event)
         ->toBeInstanceOf(WebhookEvent::class)

@@ -6,7 +6,10 @@ namespace Kalny\LaravelWebhookInbox\Models;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kalny\LaravelWebhookInbox\Database\Factories\WebhookEventFactory;
 use Kalny\LaravelWebhookInbox\Enums\PaymentProvider;
 use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
 
@@ -37,8 +40,12 @@ use Kalny\LaravelWebhookInbox\Enums\WebhookEventStatus;
     'processed_at',
     'last_error',
 ])]
+#[UseFactory(WebhookEventFactory::class)]
 class WebhookEvent extends Model
 {
+    /** @use HasFactory<WebhookEventFactory> */
+    use HasFactory;
+
     private const MAX_PROCESSING_LIFETIME = 15;
 
     protected function casts(): array
